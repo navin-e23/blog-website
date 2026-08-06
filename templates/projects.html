@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Projects - CodeLearn{% endblock %}
+
+{% block content %}
+<h1>Projects</h1>
+
+<div class="project-grid">
+    {% for p in projects %}
+    <div class="project-card">
+        <h3>{{ p.title }}</h3>
+        <span class="tag level-{{ p.level|lower }}">{{ p.level }}</span>
+        {% if p.online %}
+            <button class="btn-primary">Try Online</button>
+        {% else %}
+            <button class="btn-secondary">Download Instructions</button>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

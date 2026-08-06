@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Log In - CodeLearn{% endblock %}
+
+{% block content %}
+<h1>Log In</h1>
+<form method="POST" class="form-box">
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <button type="submit" class="btn-primary">Log In</button>
+</form>
+<p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+{% endblock %}

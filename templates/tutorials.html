@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Tutorials - CodeLearn{% endblock %}
+
+{% block content %}
+<h1>Tutorials</h1>
+
+<div class="filters">
+    <a href="{{ url_for('tutorials') }}">All</a>
+    <a href="{{ url_for('tutorials', language='Python') }}">Python</a>
+    <a href="{{ url_for('tutorials', language='JavaScript') }}">JavaScript</a>
+    <a href="{{ url_for('tutorials', level='Beginner') }}">Beginner</a>
+    <a href="{{ url_for('tutorials', level='Intermediate') }}">Intermediate</a>
+</div>
+
+<div class="tutorial-grid">
+    {% for t in tutorials %}
+    <div class="tutorial-card">
+        <h3>{{ t.title }}</h3>
+        <span class="tag">{{ t.language }}</span>
+        <span class="tag level-{{ t.level|lower }}">{{ t.level }}</span>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%;"></div>
+        </div>
+        <button class="btn-primary">Start Tutorial</button>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Home - CodeLearn{% endblock %}
+
+{% block content %}
+<section class="banner">
+    <h1>Welcome to CodeLearn</h1>
+    <p>Learn to code with hands-on tutorials and real projects.</p>
+    <form class="search-bar" action="{{ url_for('tutorials') }}" method="get">
+        <input type="text" name="q" placeholder="Search tutorials, projects...">
+        <button type="submit">Search</button>
+    </form>
+    <div class="cta-buttons">
+        <a href="{{ url_for('tutorials') }}" class="btn-primary">Start Learning</a>
+        <a href="{{ url_for('projects') }}" class="btn-secondary">Browse Projects</a>
+    </div>
+</section>
+
+<section class="slider">
+    <h2>Featured</h2>
+    <div class="slider-track">
+        <div class="slide">Python Basics Tutorial</div>
+        <div class="slide">Build a To-Do App</div>
+        <div class="slide">JavaScript for Beginners</div>
+    </div>
+</section>
+
+<section class="highlights">
+    <div class="card">
+        <h3>Tutorials</h3>
+        <p>Step-by-step lessons organized by language and level.</p>
+    </div>
+    <div class="card">
+        <h3>Projects</h3>
+        <p>Practice with real Beginner to Advanced projects.</p>
+    </div>
+    <div class="card">
+        <h3>Track Progress</h3>
+        <p>Sign up to save your progress across tutorials.</p>
+    </div>
+</section>
+{% endblock %}

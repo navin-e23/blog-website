@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CodeLearn{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">CodeLearn</div>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('tutorials') }}">Tutorials</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <div class="auth-links">
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Log In</a>
+                <a href="{{ url_for('signup') }}" class="btn-signup">Sign Up</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('tutorials') }}">Tutorials</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+        </div>
+        <div class="footer-section">
+            <h4>Social Media</h4>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p>Email: support@codelearn.com</p>
+            <p>Phone: +91 00000 00000</p>
+        </div>
+        <p class="copyright">&copy; 2026 CodeLearn. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

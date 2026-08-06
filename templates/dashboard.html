@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - CodeLearn{% endblock %}
+
+{% block content %}
+<h1>Welcome back, {{ username }}!</h1>
+
+<h2>Your Progress</h2>
+{% if progress %}
+    <ul class="progress-list">
+    {% for p in progress %}
+        <li>{{ p.tutorial_name }} - {{ p.percent_complete }}% complete</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't started any tutorials yet. <a href="{{ url_for('tutorials') }}">Browse tutorials</a></p>
+{% endif %}
+{% endblock %}
